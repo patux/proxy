@@ -1,0 +1,6 @@
+[http]
+    proxy = "http://proxy-us.intel.com:911"
+[url "http://"]
+    insteadOf = "https://"
+[url "http://"]
+    insteadOf = "git://"

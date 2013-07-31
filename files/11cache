@@ -1,0 +1,2 @@
+APT::Cache-Limit "800000000";
+APT::Cache-Start "600000000";

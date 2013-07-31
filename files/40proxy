@@ -1,0 +1,5 @@
+Acquire::http::proxy "http://proxy-us.intel.com:911/";
+Acquire::https::proxy "http://proxy-us.intel.com:911/";
+Acquire::ftp::proxy "ftp://proxy-us.intel.com:911/";
+Acquire::socks::proxy "socks://proxy-skype.intel.com:1080/";
+

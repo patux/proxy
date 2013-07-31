@@ -1,0 +1,1 @@
+include intel-proxy::remove

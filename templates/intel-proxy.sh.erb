@@ -1,0 +1,13 @@
+# /etc/profile.d/intel-proxy.sh - set intel-proxy stuff
+
+export HTTP_PROXY=http://proxy-us.intel.com:911
+export HTTPS_PROXY=http://proxy-us.intel.com:911
+export FTP_PROXY=proxy-us.intel.com:911
+export SOCKS_PROXY=proxy-skype.intel.com:1080
+export NO_PROXY=127.0.0.1,localhost,<%= hostname %>,<%= fqdn %>,.intel.com,<%= ipaddress %>,10.0.0.0/8,192.168.0.0/16
+export http_proxy=http://proxy-us.intel.com:911
+export https_proxy=http://proxy-us.intel.com:911
+export ftp_proxy=proxy-us.intel.com:911
+export socks_proxy=proxy-skype.intel.com:1080
+export no_proxy=127.0.0.1,localhost,<%= hostname %>,<%= fqdn %>,.intel.com,<%= ipaddress %>,10.0.0.0/8,192.168.0.0/16
+

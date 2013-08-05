@@ -10,7 +10,7 @@ class intel-proxy::suse-remove {
 	#	group	=> 'root',
 	#	source	=> "puppet:///modules/intel-proxy/sudoers",
 	#}
-	$files_to_remove = [ "/etc/profile.d/intel-proxy.sh", "/etc/profile.d/intel-proxy.csh", "/etc/gitconfig", "/home/vagrant/.ssh/config" ]
+	$files_to_remove = [ "/etc/profile.d/intel-proxy.sh", "/etc/profile.d/intel-proxy.csh", "/etc/gitconfig" ]
 	file { $files_to_remove: 
 		ensure	=> absent,
 	}
@@ -20,4 +20,12 @@ class intel-proxy::suse-remove {
 		group	=> 'root',
 		source	=> "puppet:///modules/intel-proxy/no-proxy",
     }
+
+	file { "/etc/ssh/ssh_config":
+		ensure	=> file,
+		mode   	=> "0644",
+		owner	=> 'root',
+		group	=> 'root',
+		source	=> "puppet:///modules/intel-proxy/ssh_config-noproxy",
+	}
 }

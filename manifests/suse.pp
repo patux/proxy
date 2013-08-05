@@ -5,14 +5,14 @@ class intel-proxy::suse {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/intel-proxy.sh",
+        content => template('intel-proxy/intel-proxy.sh.erb'),
 	}
 	file { "/etc/profile.d/intel-proxy.csh":
 		ensure	=> file,
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/intel-proxy.csh",
+        content => template('intel-proxy/intel-proxy.csh.erb'),
 	}
 
     file { '/etc/sysconfig/proxy':
@@ -26,23 +26,19 @@ class intel-proxy::suse {
         path => '/etc/sudoers',
         line => 'Defaults        env_keep += "http_proxy https_proxy ftp_proxy no_proxy socks_proxy"',
     }
-    file {
-	"gitconfig":
+    file { '/etc/gitconfig':
 		ensure	=> file,
-		path 	=> '/etc/gitconfig',
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
 		source	=> "puppet:///modules/intel-proxy/gitconfig";
 	}
-    file {
-	"sshconfig":
+    file { '/etc/ssh/ssh_config':
 		ensure	=> file,
-		path 	=> '/home/vagrant/.ssh/config',
-		mode   	=> "0600",
-		owner	=> 'vagrant',
-		group	=> 'vagrant',
-		source	=> "puppet:///modules/intel-proxy/sshconfig";
+        owner => root,
+        group => root,
+        mode => '0644',
+        content => template('intel-proxy/ssh_config.erb'),
 	}
 }
 

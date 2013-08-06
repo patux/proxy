@@ -12,7 +12,7 @@ Current OS Supported:
   * Debian based:
     * debian, ubuntu
   * SuSE based:
-    * opensuse
+    * OpenSuSE/SLES/SLED
 
 
 Usage:

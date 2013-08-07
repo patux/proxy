@@ -1,5 +1,5 @@
 #Class: no-proxy
-class intel-proxy::debian-remove {
+class proxy::debian-remove {
 
 	#file { 
   	#"sudoers":
@@ -8,7 +8,7 @@ class intel-proxy::debian-remove {
 	#	mode   	=> "0440",
 	#	owner	=> 'root',
 	#	group	=> 'root',
-	#	source	=> "puppet:///modules/intel-proxy/sudoers",
+	#	source	=> "puppet:///modules/proxy/sudoers",
 	#}
 	$files_to_remove = [ "/etc/apt/apt.conf.d/40proxy", "/etc/apt/apt.conf.d/11cache", "/etc/gitconfig" ]
     file { $files_to_remove: 
@@ -19,14 +19,14 @@ class intel-proxy::debian-remove {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/noproxy-environment",
+		source	=> "puppet:///modules/proxy/noproxy-environment",
 	}
 	file { "/etc/ssh/ssh_config":
 		ensure	=> file,
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/ssh_config-noproxy",
+		source	=> "puppet:///modules/proxy/ssh_config-noproxy",
 	}
 
 }

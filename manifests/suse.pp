@@ -1,25 +1,25 @@
 
-class intel-proxy::suse {
-	file { "/etc/profile.d/intel-proxy.sh":
+class proxy::suse {
+	file { "/etc/profile.d/proxy.sh":
 		ensure	=> file,
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-        content => template('intel-proxy/intel-proxy.sh.erb'),
+        content => template('proxy/proxy.sh.erb'),
 	}
-	file { "/etc/profile.d/intel-proxy.csh":
+	file { "/etc/profile.d/proxy.csh":
 		ensure	=> file,
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-        content => template('intel-proxy/intel-proxy.csh.erb'),
+        content => template('proxy/proxy.csh.erb'),
 	}
 
     file { '/etc/sysconfig/proxy':
    		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/proxy",
+        content => template('proxy/suseproxy.erb'),
     }
 
     file_line { 'sudo_rule':
@@ -31,14 +31,14 @@ class intel-proxy::suse {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/gitconfig";
+		source	=> "puppet:///modules/proxy/gitconfig";
 	}
     file { '/etc/ssh/ssh_config':
 		ensure	=> file,
         owner => root,
         group => root,
         mode => '0644',
-        content => template('intel-proxy/ssh_config.erb'),
+        content => template('proxy/ssh_config.erb'),
 	}
 }
 

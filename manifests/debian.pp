@@ -1,5 +1,5 @@
-#Class: intel-proxy
-class intel-proxy::debian {
+#Class: proxy
+class proxy::debian {
 
     file {
     "apt-cachelimit":
@@ -8,7 +8,7 @@ class intel-proxy::debian {
         mode    => "0644",
         owner   => 'root',
         group   => 'root',
-        source  => "puppet:///modules/intel-proxy/11cache",
+        source  => "puppet:///modules/proxy/11cache",
         before  => File["apt-proxy"], 
     }
 
@@ -22,7 +22,7 @@ class intel-proxy::debian {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-        content => template('intel-proxy/environment.erb'),
+        content => template('proxy/environment.erb'),
 	}
 	file {
 	"apt-proxy":
@@ -31,7 +31,7 @@ class intel-proxy::debian {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/40proxy",
+        content => template('proxy/40proxy.erb'),
 	}
 
     file { '/etc/gitconfig':
@@ -39,13 +39,13 @@ class intel-proxy::debian {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/gitconfig";
+		source	=> "puppet:///modules/proxy/gitconfig";
 	}
     file { '/etc/ssh/ssh_config':
 		ensure	=> file,
         owner => root,
         group => root,
 		mode  => "0644",
-        content => template('intel-proxy/ssh_config.erb'),
+        content => template('proxy/ssh_config.erb'),
 	}
 }

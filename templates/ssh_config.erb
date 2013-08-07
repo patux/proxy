@@ -16,15 +16,15 @@
 # list of available options, their meanings and defaults, please see the
 # ssh_config(5) man page.
 
-Host *.intel.com
+Host *<%= @no_proxy_domains %> 
   ProxyCommand nc %h %p 
 #  ProxyCommand connect %h %p 
 
-Host 10.*.*.* 127.*.*.* 134.134.*.* 143.182.*.* 163.33.*.* 169.254.*.* 172.16.*.* 192.168.*.* 224.*.*.* 240.*.*.* localhost @hostname 
+Host 10.*.*.* 127.*.*.* 134.134.*.* 143.182.*.* 163.33.*.* 169.254.*.* 172.16.*.* 192.168.*.* 224.*.*.* 240.*.*.* localhost <%= @hostname %>
     ProxyCommand nc %h %p
 
 Host *
-  ProxyCommand nc -x proxy-skype.intel.com:1080 %h %p
+    ProxyCommand nc -x <%= @socks_proxy_host %>:<%= @socks_proxy_port %> %h %p
 #   ForwardAgent no
 #   ForwardX11 no
 #   ForwardX11Trusted yes

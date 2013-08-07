@@ -1,23 +1,23 @@
 
-class intel-proxy::redhat {
-	file { "/etc/profile.d/intel-proxy.sh":
+class proxy::redhat {
+	file { "/etc/profile.d/proxy.sh":
 		ensure	=> file,
 		mode   	=> "0755",
 		owner	=> 'root',
 		group	=> 'root',
-        content => template('intel-proxy/intel-proxy.sh.erb'),
+        content => template('proxy/proxy.sh.erb'),
 	}
-	file { "/etc/profile.d/intel-proxy.csh":
+	file { "/etc/profile.d/proxy.csh":
 		ensure	=> file,
 		mode   	=> "0755",
 		owner	=> 'root',
 		group	=> 'root',
-        content => template('intel-proxy/intel-proxy.csh.erb'),
+        content => template('proxy/proxy.csh.erb'),
 	}
 
     file_line { 'yum_proxy':
         path => '/etc/yum.conf',
-        line => 'proxy=http://proxy-us.intel.com:911',
+        line => "proxy=http://${proxy::http_proxy_host}:${proxy::http_proxy_port}",
     }
     file_line { 'sudo_rule':
         path => '/etc/sudoers',
@@ -28,14 +28,14 @@ class intel-proxy::redhat {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/gitconfig";
+		source	=> "puppet:///modules/proxy/gitconfig";
 	}
     file { '/etc/ssh/ssh_config':
 		ensure	=> file,
         owner => root,
         group => root,
         mode => '0644',
-        content => template('intel-proxy/ssh_config.erb'),
+        content => template('proxy/ssh_config.erb'),
 	}
 }
 

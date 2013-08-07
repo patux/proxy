@@ -1,6 +1,6 @@
 
-class intel-proxy::redhat-remove {
-	$files_to_remove = [ "/etc/profile.d/intel-proxy.sh", "/etc/profile.d/intel-proxy.csh", "/etc/gitconfig",]
+class proxy::redhat-remove {
+	$files_to_remove = [ "/etc/profile.d/proxy.sh", "/etc/profile.d/proxy.csh", "/etc/gitconfig",]
 	file { $files_to_remove:
 		ensure	=> absent,
 	}
@@ -14,7 +14,7 @@ class intel-proxy::redhat-remove {
 		mode   	=> "0644",
 		owner	=> 'root',
 		group	=> 'root',
-		source	=> "puppet:///modules/intel-proxy/ssh_config-noproxy",
+		source	=> "puppet:///modules/proxy/ssh_config-noproxy",
 	}
 }
 

@@ -1,1 +1,1 @@
-include intel-proxy::remove
+include proxy::remove

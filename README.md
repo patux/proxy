@@ -3,6 +3,8 @@ Module Description
 Setup or Removes the Proxy configuration on Linux boxes
 
 This module depends on stdlib from puppetlabs to work: [https://github.com/puppetlabs/puppetlabs-stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
+In case you do not have access to internet (for obvious reasons, not setting the proxy yet :P ) You can take it from vendor directory (included here)
+and move to your modules directory:
 
 
 Current OS Supported:
@@ -35,10 +37,20 @@ Setup the proxy:
 
 Remove the proxy:
 ----------------
-<code>
     node default { 
         class { 'proxy::remove': } 
     } 
-</code>
+
+
+Example:
+-------
+
+    $ mkdir -p puppet/modules
+    $ cd puppet/modules
+    $ git clone https://github.intel.com/gorozco1/pm-intel-proxy proxy
+    $ cd proxy
+    $ mv vendor/stdlib ../
+    $ cd tests
+    $ puppet apply --modulepath=../../ setup.pp
 
 

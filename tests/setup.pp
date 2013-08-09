@@ -1,1 +1,1 @@
-include intel-proxy
+include proxy

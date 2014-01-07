@@ -1,4 +1,4 @@
 [color]
 	ui = auto
-[url "https://"]
+[url "http://"]
     insteadof = git:// 

@@ -21,15 +21,19 @@ Usage:
 ====================
 Setup the proxy:
 ----------------
+**NOTE** Schemes are mandatory:
+Proxy URLs now must have an explicit scheme. A MissingSchema exception will be raised if they don't. 
+More info: https://pypi.python.org/pypi/requests
+
     node default {
         class { 'proxy': 
-            http_proxy_host  =>  "myproxy.url.com", 
+            http_proxy_host  =>  "http://myproxy.url.com", 
             http_proxy_port  => "3128", 
-            https_proxy_host =>  "myproxy.url.com", 
+            https_proxy_host =>  "http://myproxy.url.com", 
             https_proxy_port => "3128", 
-            socks_proxy_host =>  "myproxy.url.com", 
+            socks_proxy_host =>  "socks://myproxy.url.com", 
             socks_proxy_port => "3128", 
-            ftp_proxy_host   =>  "myproxy.url.com", 
+            ftp_proxy_host   =>  "ftp://myproxy.url.com", 
             ftp_proxy_port   => "3128", 
             no_proxy_domains => ".intel.com" 
         }

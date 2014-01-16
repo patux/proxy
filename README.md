@@ -51,7 +51,7 @@ Example:
 
     $ mkdir -p puppet/modules
     $ cd puppet/modules
-    $ git clone https://github.intel.com/gorozco1/pm-intel-proxy proxy
+    $ git clone https://github.com/patux/proxy.git
     $ cd proxy
     $ mv vendor/stdlib ../
     $ cd tests

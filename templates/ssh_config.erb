@@ -22,8 +22,13 @@ Host *<%= @no_proxy_domains %>
 Host 10.*.*.* 127.*.*.* 134.134.*.* 143.182.*.* 163.33.*.* 169.254.*.* 172.16.*.* 192.168.*.* 224.*.*.* 240.*.*.* 172.16.*.* 172.17.*.* 172.18.*.* 172.19.*.* 172.20.*.* 172.21.*.* 172.22.*.* 172.23.*.* 172.24.*.* 172.25.*.* 172.26.*.* 172.27.*.* 172.28.*.* 172.29.*.* 172.30.*.* 172.31.*.* localhost <%= @hostname %>
     ProxyCommand nc %h %p
 
+<% if @socks_proxy_host %>
 Host *
     ProxyCommand nc -x <%= @socks_proxy_host %>:<%= @socks_proxy_port %> %h %p
+<% else %>
+Host *
+    ProxyCommand /usr/bin/corkscrew <%= @http_proxy_host %> <%= @http_proxy_port %> %h %p
+<% end %>
 #   ForwardAgent no
 #   ForwardX11 no
 #   ForwardX11Trusted yes

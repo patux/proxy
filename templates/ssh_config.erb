@@ -23,8 +23,7 @@ Host 10.*.*.* 127.*.*.* 134.134.*.* 143.182.*.* 163.33.*.* 169.254.*.* 172.16.*.
     ProxyCommand nc %h %p
 
 Host *
-#    ProxyCommand nc -x <%= @socks_proxy_host %>:<%= @socks_proxy_port %> %h %p
-    ProxyCommand /usr/bin/corkscrew <%= @http_proxy_host %>:<%= @http_proxy_port %> %h %p 
+    ProxyCommand nc -x <%= @socks_proxy_host %>:<%= @socks_proxy_port %> %h %p
 #   ForwardAgent no
 #   ForwardX11 no
 #   ForwardX11Trusted yes

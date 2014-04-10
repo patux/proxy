@@ -1,4 +1,9 @@
+<% if @http_proxy_host != "nil" %><% then %>
 Acquire::http::proxy "<%= @http_proxy_host %>:<%= @http_proxy_port %>/";
+<% end %>
+<% if @https_proxy_host != "nil"  %><% then %>
 Acquire::https::proxy "<%= @https_proxy_host %>:<%= @https_proxy_port %>/";
+<% end %>
+<% if @socks_proxy_host != "nil"  %><% then %>
 Acquire::socks::proxy "<%= @socks_proxy_host %>:<%= @socks_proxy_port %>/";
-
+<% end %>

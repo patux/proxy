@@ -16,14 +16,19 @@
 # list of available options, their meanings and defaults, please see the
 # ssh_config(5) man page.
 
-Host *<%= @no_proxy_domains %> 
-    ProxyCommand nc %h %p 
-
+<% if @http_proxy_host != "nil" or @https_proxy_host != "nil" %>
+<% @no_proxy_domains.split(',').each do |val| %>
+Host *<%= val %>
+    ProxyCommand nc %h %p
+<% end %>
 Host 10.*.*.* 127.*.*.* 134.134.*.* 143.182.*.* 163.33.*.* 169.254.*.* 172.16.*.* 192.168.*.* 224.*.*.* 240.*.*.* 172.16.*.* 172.17.*.* 172.18.*.* 172.19.*.* 172.20.*.* 172.21.*.* 172.22.*.* 172.23.*.* 172.24.*.* 172.25.*.* 172.26.*.* 172.27.*.* 172.28.*.* 172.29.*.* 172.30.*.* 172.31.*.* localhost <%= @hostname %>
     ProxyCommand nc %h %p
+<% end %>
 
 Host *
+<% if @socks_proxy_host != "nil" %>
     ProxyCommand nc -x <%= @socks_proxy_host %>:<%= @socks_proxy_port %> %h %p
+<% end %>
 #   ForwardAgent no
 #   ForwardX11 no
 #   ForwardX11Trusted yes

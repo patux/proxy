@@ -35,7 +35,7 @@ More info: https://pypi.python.org/pypi/requests
             socks_proxy_port => "3128", 
             ftp_proxy_host   =>  "ftp://myproxy.url.com", 
             ftp_proxy_port   => "3128", 
-            no_proxy_domains => ".intel.com" 
+            no_proxy_domains => ".intel.com,.mylocalnet.com",
         }
     }
 

@@ -23,13 +23,15 @@ class proxy::redhat {
         path => '/etc/sudoers',
         line => 'Defaults        env_keep += "http_proxy https_proxy ftp_proxy no_proxy socks_proxy"',
     }
-   file { '/etc/gitconfig':
-		ensure	=> file,
-		mode   	=> "0644",
-		owner	=> 'root',
-		group	=> 'root',
-		source	=> "puppet:///modules/proxy/gitconfig";
-	}
+    if $http_proxy_host != "nil" {
+        file { '/etc/gitconfig':
+            ensure	=> file,
+            mode   	=> "0644",
+            owner	=> 'root',
+            group	=> 'root',
+            source	=> "puppet:///modules/proxy/gitconfig";
+        }
+    }
     file { '/etc/ssh/ssh_config':
 		ensure	=> file,
         owner => root,

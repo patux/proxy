@@ -34,12 +34,14 @@ class proxy::debian {
         content => template('proxy/40proxy.erb'),
 	}
 
-    file { '/etc/gitconfig':
-		ensure	=> file,
-		mode   	=> "0644",
-		owner	=> 'root',
-		group	=> 'root',
-		source	=> "puppet:///modules/proxy/gitconfig";
+    if $http_proxy_host != "nil" {
+        file { '/etc/gitconfig':
+            ensure	=> file,
+            mode   	=> "0644",
+            owner	=> 'root',
+            group	=> 'root',
+            source	=> "puppet:///modules/proxy/gitconfig";
+        }
 	}
     file { '/etc/ssh/ssh_config':
 		ensure	=> file,

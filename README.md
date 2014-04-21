@@ -55,6 +55,7 @@ Example:
     $ cd proxy
     $ mv vendor/stdlib ../
     $ cd tests
+    $ vi setup.pp # modify accoring your environment
     $ puppet apply --modulepath=../../ setup.pp
 
 

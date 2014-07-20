@@ -11,8 +11,8 @@ export HTTP_PROXY=<%= @http_proxy_host %>:<%= @http_proxy_port %>
 <% else %>
 <% server_ip = @ipaddress_eth0 %>
 <% end %>
-export no_proxy=127.0.0.1,localhost,<%= hostname %>,<%= fqdn %>,<%= ipaddress %>,<%= server_ip %>,<%= domains %>
-export NO_PROXY=127.0.0.1,localhost,<%= hostname %>,<%= fqdn %>,<%= ipaddress %>,<%= server_ip %>,<%= domains %>
+export no_proxy=127.0.0.1,localhost,<%= @hostname %>,<%= @fqdn %>,<%= @ipaddress %>,<%= server_ip %>,<%= domains %>
+export NO_PROXY=127.0.0.1,localhost,<%= @hostname %>,<%= @fqdn %>,<%= @ipaddress %>,<%= server_ip %>,<%= domains %>
 <% end %>
 <% if @https_proxy_host != "nil" %><% then %>
 export https_proxy=<%= @http_proxy_host %>:<%= @http_proxy_port %>
